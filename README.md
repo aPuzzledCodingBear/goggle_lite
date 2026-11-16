@@ -8,6 +8,8 @@
 
 Goggle Lite investigates whether a lightweight head-worn display can work with physically separate computation and power. The V1 demonstration uses CarPlay navigation; the project validates the modular architecture rather than building a finished CarPlay product.
 
+**Sustained glasses wear drives the architecture:** the head-worn module must be as light, small, and simple as practical. Retain only essential display functions on the frame; move compute, energy and controls off-head. The ≤30g added-mass target is a provisional ceiling, not proof of comfort. See the [wearability rationale and verification method](docs/wearability.md).
+
 Three module boundaries are explicit:
 
 | Module | V1 implementation | Boundary to validate |
@@ -68,6 +70,8 @@ V1 使用 CarPlay 导航作为演示负载；项目的核心是验证模块化�
 | 显示 | 风镜上的 OL23 光学组件 + HDMI 驱动板 | HDMI 视频与独立稳压供电，头部无电池 |
 | 运算 | 已有 Zero 2 W + CPC200-CCPA + GPIO 交互 | 接收并解码演示负载，输出 HDMI |
 | 能源 | 先用外置5V移动电源，后续可选电池及管理板 | 可拆离供电，测量功耗与线缆压降 |
+
+**长期佩戴眼镜是架构的现实出发点：头部模块应尽量轻、尽量小、尽量简单。**头部只留显示必需功能，运算、能源和控件外移。新增重量≤30g只是暂定上限，不能证明长时间舒适，见[佩戴需求论证与验证方法](docs/wearability.md)。
 
 运算和能源模块可以都固定在胸前，但应保持独立装配及明确连接器，不要求放在同一个封闭壳体内。模块化不等于电气隔离或支持热插拔。iPhone继续负责导航和应用层计算。
 

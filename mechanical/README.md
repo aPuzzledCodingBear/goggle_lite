@@ -4,6 +4,8 @@
 
 The design validates separate display, compute, and energy modules. This directory will hold source CAD, STL/STEP exports, and printing parameters. No manufacturing dimensions are inferred from missing source images.
 
+For sustained wear, minimize the complete head-borne assembly, not only the optics. Record installed mass/balance, protrusion, plug/cable envelope, and each retained component's necessity. Support cable weight independently. Do not sacrifice eye clearance, adjustment travel or strength for smaller dimensions. Compare against unmodified eyewear in staged wear trials; see [wearability rationale](../docs/wearability.md).
+
 - goggles_mount: retain the original optics/FPC assembly; allow vertical, lateral, depth, and angle adjustment, then lock it.
 - driver_enclosure: place the HDMI driver near the frame/headband connection with connector clearance and strain relief.
 - pendant: Zero and CCPA form the compute module; power electronics and the future battery form the energy module. Keep separable interfaces, even if initially partitioned within one enclosure. Keep the battery away from heat and sharp edges.
@@ -21,6 +23,8 @@ The optical assembly must not contact the eye during slipping or impact. Reversi
 结构用于验证显示、运算与能源模块分离；模块接口需可识别和拆换。
 
 本目录后续存放源CAD、导出STL/STEP及打印参数。当前没有依据缺失原图虚构可制造尺寸。
+
+为长期佩戴，减重缩小的对象是完整头部装配，而非仅光机。记录安装后的重量／平衡、突出尺寸、插头线缆包络，以及每个本地部件保留的必要性。独立支撑线缆重量，不能牺牲眼部间隙、调节行程或强度来缩壳。与原眼镜对比逐级试戴，见[佩戴需求论证](../docs/wearability.md)。
 
 - goggles_mount：保留原厂光学组件和FPC整体；上下、左右、前后及角度可调，调整后锁定。
 - driver_enclosure：沿镜框/头带连接处布置HDMI板，留插拔空间和应力释放。

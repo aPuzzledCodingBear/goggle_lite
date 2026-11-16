@@ -6,6 +6,10 @@ This is an engineering prototype to validate separation of **display, compute, a
 
 The user-supplied conversation ends with the FastCarPlay route. Earlier dedicated receiver PCBA, Pico, and LIVI routes are outside V1.
 
+### Sustained-wear design requirement
+
+The head-worn module must be as light, small, and simple as practical because the glasses support it throughout prolonged wear, including idle periods. Minimize complete installed mass, protrusion and local functions, while preserving optical adjustment, eye clearance and secure mounting. Keep compute, energy and controls off-head; justify every component retained on the frame. The ≤30g added-mass goal is a provisional ceiling, not a comfort threshold. See [rationale and wear trials](wearability.md).
+
 ### Decisions
 
 - iPhone runs navigation, applications, location, and UI generation.
@@ -44,6 +48,10 @@ Source: [shared discussion](https://chatgpt.com/share/6afac55f-4244-83e8-bf40-7b
 ## 项目定位
 
 本项目是验证显示、运算及能源模块分离的工程原型。CarPlay只是现阶段用于验证视频、交互和无线连接的负载，不是项目最终产品定义。显示模块、运算模块和能源模块分别定义接口、测量和替换路径。先用集中5V台架供电，再验证独立能源模块经线束供电；逻辑分离不等于已经完成物理三仓设计。
+
+## 长期佩戴设计要求
+
+头部模块必须在可行范围内尽量轻、小、简单，因为长时间使用及显示空闲期间，眼镜始终承担其负载。减少完整安装后的重量、突出尺寸和本地功能数量，同时保留光学调节、眼部间隙和可靠固定。运算、能源及控件移出头部，每个留在镜框上的部件都需说明理由。新增重量≤30g是暂定上限，不是舒适性阈值，见[论证与试戴方法](wearability.md)。
 
 ## 已决定
 

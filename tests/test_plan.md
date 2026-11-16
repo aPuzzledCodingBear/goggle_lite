@@ -21,6 +21,8 @@ All entries are targets, not executed results. Use the [measurement template](te
 | Supply | Measure peaks, board voltage, low battery, shutdown | No undervoltage or abnormal power-loss damage |
 | Runtime | Full discharge at fixed brightness/workload | ≥2h after final battery integration |
 | Mass | Include cables and fasteners | Added goggle mass ≤30g; chest assembly ≤150g |
+| Sustained wear | Compare unmodified eyewear and prototype in stationary 15/30/60-minute stages; stop on discomfort or unstable fit | Record duration, pressure/discomfort, slip/readjustments, image loss, cable drag and temperature; mass target alone is not a comfort pass |
+| Head-module packaging | Measure installed envelope/balance including plugs and supported cables; list local components | Minimize mass, protrusion and local functions without sacrificing clearance or alignment; justify retained components |
 | Mount/strap | Stationary wear, normal head turns, controlled pull | No eye contact; stable image; cable breakaway |
 
 Do not conduct initial tests while cycling/driving on public roads. Outdoor dynamic use follows display, power, and fit gates.
@@ -48,6 +50,8 @@ Do not conduct initial tests while cycling/driving on public roads. Outdoor dyna
 | 供电 | 测峰值、板端电压、低电量、关机 | 无欠压和异常断电损坏 |
 | 续航 | 固定亮度与负载完整放电测试 | ≥2h（最终电池装配后） |
 | 重量 | 含线材固定件称重 | 风镜新增≤30g；胸前≤150g |
+| 持续佩戴 | 原眼镜与原型对比，静止15/30/60分钟逐级试戴；不适或固定不稳即停 | 记录时长、压迫／不适、滑移／调整、画面丢失、线缆牵拉及温度；满足重量不等于舒适通过 |
+| 头部封装 | 测含插头及支撑线缆的包络／平衡，列本地部件 | 在不牺牲间隙与对准前提下减重、缩小、简化；说明部件保留理由 |
 | 结构/挂绳 | 静止佩戴、正常转头、受控牵拉 | 不触眼、画面稳定、线缆可脱离 |
 
 首轮不在公共道路骑行/驾驶中测试。未通过显示、供电和佩戴关卡前不做户外动态试用。
