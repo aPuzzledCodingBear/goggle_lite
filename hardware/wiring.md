@@ -1,3 +1,39 @@
+# Wiring plan — not bench-tested
+
+English first; Chinese follows. These connections implement a detachable display module, compute module and energy module. CarPlay is the demonstration workload, not the architecture boundary.
+
+GPIO numbers are BCM. Connect passive switches/encoder contacts only between input and ground, with internal pull-ups; never connect these inputs to 5V.
+
+| Function | BCM GPIO | Physical pin |
+|---|---:|---:|
+| EC11 A | 17 | 11 |
+| EC11 B | 27 | 13 |
+| Encoder press | 22 | 15 |
+| Back | 23 | 16 |
+| Blank display | 24 | 18 |
+| Display load-switch enable, optional | 25 | 22 |
+| Common ground | GND | 9 |
+
+Connect encoder common to GND. The push switch has separate contacts. Confirm the actual EC11 pinout with a meter. Fit headers to an unpopulated Zero first; do not route battery/high-current power through breadboard rails.
+
+## Module interfaces
+
+- **Compute:** Zero 2 W + CCPA + GPIO controls; CCPA connects through a USB-A female OTG cable to Zero's data port. The other Micro USB port powers Zero.
+- **Display:** OL23 + HDMI driver; retain the factory FPC between driver and optics. Extend verified HDMI, not raw RGB/FPC. Zero uses **Mini HDMI Type C**, not Micro Type D; confirm the OL23 connector before ordering.
+- **Energy:** external regulated 5V source with separate branches to compute and display. Start with one bench source, then test the intended detachable energy module. Record branch current, board-end voltage, connector polarity and power-off behavior.
+
+## Power and shutdown
+
+Follow the original vendor drawing for display supply and common ground. Any removal of a 0Ω resistor requires the original modification diagram, not a reconstruction from chat text.
+
+Do not parallel two active 5V outputs. GPIO drives a logic enable only, not the display load. A load switch controls the display branch; HDMI has additional powered/signaling paths, so test backfeed, actual blanking and EDID recovery after power restoration.
+
+A mechanical switch does not shut Linux down cleanly. Use normal shutdown before disconnecting compute power until a shutdown/readonly-filesystem strategy has been verified. Detachable means removable after an appropriate shutdown, not guaranteed hot-swappable.
+
+Pin reference: [Raspberry Pi GPIO documentation](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#gpio).
+
+---
+
 # 接线规划 · 尚未实测
 
 GPIO 编号为 BCM。仅无源编码器/开关接输入与GND，启用内部上拉，不接5V。
@@ -29,3 +65,5 @@ GPIO 编号为 BCM。仅无源编码器/开关接输入与GND，启用内部上�
 机械拨动开关不是Linux正常关机。最终电源切断需等待系统关机或完成只读文件系统策略；初期通过系统shutdown后再拔电。
 
 物理针脚参考：[Raspberry Pi官方GPIO文档](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#gpio)。
+
+模块边界：计算模块含Zero、CCPA及交互；显示模块含OL23及驱动板；能源模块为可拆离5V电源。先单一台架电源分支供电，再测目标独立能源模块。记录各支路电流、板端电压、极性和断电行为。可拆离指正常关机后可拆，不代表支持热插拔。

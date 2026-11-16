@@ -1,6 +1,49 @@
-# 需求基线 · 2026-11-16
+# Requirements baseline · 2026-11-16
+
+## English
+
+This is an engineering prototype to validate separation of **display, compute, and energy modules**. CarPlay is the current test workload for video, interaction, and wireless connectivity; it is not the final product definition. Each module needs documented interfaces, measurements, and a replacement path. Start with a centralized 5V bench supply, then validate a separate energy module powering the system through the harness. Logical separation does not mean three physical enclosures have already been designed.
+
+The user-supplied conversation ends with the FastCarPlay route. Earlier dedicated receiver PCBA, Pico, and LIVI routes are outside V1.
+
+### Decisions
+
+- iPhone runs navigation, applications, location, and UI generation.
+- The existing Raspberry Pi Zero 2 W runs FastCarPlay with a CPC200-CCPA wireless AutoKit USB adapter.
+- The display module uses OL23 monocular full-color see-through optics and an HDMI driver, not the AV version.
+- A bare EC11 push encoder and two back/blanking buttons connect directly to GPIO. Finger-contact mechanical parts are printed.
+- Breadboard first, soldered flying wires later; no custom PCB. The existing Pico 1 is unused.
+- The chest compute module receives and decodes video. The energy module supplies power; it may initially share the chest location, with separable interfaces. The neck harness carries HDMI and separate power; no head-mounted battery.
+- PETG/TPU enclosures and mounts use reversible attachment where possible.
+
+### Conversation-reported specifications — not independently verified
+
+| Part | Reported specification | Verification needed |
+|---|---|---|
+| OL23 | ECX336CN, 640×400, 60Hz, approximately 12g | Model and whether weight includes cables |
+| Optics | FOV 21.2°×13.26°, eyebox 10.8×5.4mm, eye relief 15mm | Original datasheet and assembly drawing |
+| Brightness | 0–400nits at eye; 3000nits panel | Do not equate them; outdoor measurement needed |
+| Envelope | Approximately 60.74×37.03×24.37mm | Original image missing; not a manufacturing CAD input |
+| HDMI board | 40.5×12.5mm, DC3.5–5V | Connector, timings, power, polarity, BRT ADJ |
+| External power | Reportedly requires removing a specified 0Ω resistor | Obtain original instructions before modifying |
+
+### V1 engineering targets — unmeasured
+
+Monocular full-color 640×400; chest assembly approximately 80×50×30mm and ≤150g; added goggle mass ≤30g; runtime ≥2h; removable and repairable modules. Stable bench operation and readability take priority over size, which must be reassessed after measurement.
+
+Audio and microphone hardware are outside the current purchasing baseline. A normal monitor supports bench work; the final navigation/Siri audio path must be defined separately. Do not assume direct phone audio or Bluetooth headphones will work automatically.
+
+Source: [shared discussion](https://chatgpt.com/share/6afac55f-4244-83e8-bf40-7b98fdae869a), supplied as text by the user; original uploaded images are missing.
+
+---
+
+# 中文 · 需求基线
 
 依据用户粘贴的分享正文，以末尾确认的 FastCarPlay 方案为准；早期的专用接收 PCBA、Pico 和 LIVI 方案不进入 V1。
+
+## 项目定位
+
+本项目是验证显示、运算及能源模块分离的工程原型。CarPlay只是现阶段用于验证视频、交互和无线连接的负载，不是项目最终产品定义。显示模块、运算模块和能源模块分别定义接口、测量和替换路径。先用集中5V台架供电，再验证独立能源模块经线束供电；逻辑分离不等于已经完成物理三仓设计。
 
 ## 已决定
 
@@ -9,7 +52,7 @@
 - 显示为 OL23 全彩单目透视模组，选择 HDMI 驱动套件，不选 AV 版。
 - EC11 带按压裸编码器 + 返回/黑屏两个按键，GPIO 直连；机械手指接触件自行打印。
 - 面包板验证、飞线总装，无定制 PCB；Pico 1 本版闲置。
-- 胸前主机接收、解码、供电；挂脖线束承载 HDMI 和独立供电；头部无电池。
+- 胸前运算模块接收、解码；能源模块负责供电，初期可同处胸前但需保持可分离接口；挂脖线束承载 HDMI 和独立供电；头部无电池。
 - 外壳及支架 PETG / TPU 打印，优先可逆固定。
 
 ## 对话转述的参数（未独立核验）

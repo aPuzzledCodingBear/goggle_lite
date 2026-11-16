@@ -1,11 +1,89 @@
-# 实施待办
+# Implementation checklist
+
+## English
+
+The goal is modular display/compute/energy validation. CarPlay is the first workload. Estimated development effort is 18–29 hours, excluding shipping, compatibility problems, and rework. Completed items require evidence; planning is not a hardware test.
+
+### M0 · Preparation (1–2h)
+
+- [x] Create the local Git project.
+- [x] Create the GitHub repository and push initial content.
+- [x] Select FastCarPlay and define phased purchasing.
+- [ ] Confirm OL23 HDMI connector, input timings, and original external-power instructions.
+- [ ] Confirm CCPA hardware/firmware version, AutoKit support, and return conditions.
+- [ ] Inventory power supplies, microSD, tools, and printing materials.
+- [ ] Purchase the first batch; record links and delivered versions.
+
+### M1 · CarPlay bench prototype (3–5h)
+
+- [ ] Choose a reproducible Raspberry Pi OS Lite version from the upstream guide; record image date/version.
+- [ ] Fetch FastCarPlay, record its commit, and build release.
+- [ ] Connect CCPA through OTG; record VID:PID with lsusb and configure USB permissions.
+- [ ] Verify wireless pairing and hardware video decoding on a normal HDMI monitor.
+- [ ] Verify Left/Right/Enter/Backspace, reconnection, and stability.
+
+Gate: stabilize the normal-monitor chain before optical integration. Do not remove the adapter enclosure yet.
+
+### M2 · Optical validation (2–3h)
+
+- [ ] Confirm voltage, polarity, and original power instructions before connecting OL23.
+- [ ] Record EDID, input timings, scaling, mirroring, and active image area.
+- [ ] Assess map text and readability against indoor/outdoor backgrounds.
+- [ ] Measure display-board power at maximum brightness.
+- [ ] Determine monocular placement and adjustment range.
+
+Gate: HDMI timing compatibility and readability must pass before wearable geometry is finalized.
+
+### M3 · Physical interaction (2–4h)
+
+- [ ] Breadboard EC11 and two buttons.
+- [ ] Implement GPIO debouncing and an encoder state machine, including rapid reversal.
+- [ ] Emit Left/Right/Enter/Backspace through uinput.
+- [ ] Implement display blank/restore; distinguish software black from display-power switching.
+- [ ] Define boot, service failure, and CarPlay-disconnect display states.
+- [ ] Test sustained scrolling, unintended input, and latency.
+
+### M4 · Energy module and separation (2–3h)
+
+- [ ] Start with a power bank; record supply-side and board-side voltages.
+- [ ] Measure average/peak power and low-battery behavior.
+- [ ] Measure steady-state temperature rise.
+- [ ] Select battery, power board, wire gauge, and load switch from measurements.
+- [ ] Verify normal shutdown and power-removal strategy.
+- [ ] Verify replaceable energy, retained compute, and an independently connected display; record interfaces and failure behavior.
+- [ ] Purchase the second batch.
+
+### M5 · CAD and printing (5–8h)
+
+- [ ] Measure all PCBs, connectors, cable bend radii, and goggle internal clearances.
+- [ ] Design adjustable optical mounting and an HDMI-driver enclosure.
+- [ ] Design the chest enclosure, board isolation, and thermal paths.
+- [ ] Design printed encoder wheel, button caps, and travel limits.
+- [ ] Design strain relief and a cable path that actually disconnects under breakaway.
+- [ ] Print, trial-fit, revise, and save CAD/slicer parameters.
+
+### M6 · Assembly and testing (3–4h)
+
+- [ ] After bench validation, remove the CCPA enclosure and measure its PCB.
+- [ ] Remove the breadboard; solder, insulate, and secure flying wires.
+- [ ] Assemble compute, energy interfaces, neck harness, and optical mount.
+- [ ] Execute the test plan; record runtime, heat, reconnection, and blanking.
+- [ ] Update the final BOM, assembly photos, and version.
+
+Next: verify B01/B02 and establish the normal-monitor bench chain. There are currently no recorded deliveries or hardware passes.
+
+---
+
+# 中文 · 实施待办
+
+目标是验证显示、运算及能源模块分离，CarPlay作为首个验证负载。
 
 开发估算18–29小时，不含到货、兼容问题及返工。完成项需有记录；不以规划文档代替实测。
 
 ## M0 · 准备（1–2h）
 
 - [x] 建立本地 Git 项目。
-- [x] 创建 private GitHub repo 并推送。
+- [x] 建立 GitHub 仓库并推送初始内容。
 - [x] 固定 FastCarPlay 路线和分批 BOM。
 - [ ] 确认 OL23 HDMI 插座、输入时序、外接供电原图。
 - [ ] 确认 CCPA 具体硬件/固件、AutoKit 支持及退换条件。
@@ -41,13 +119,14 @@
 - [ ] 定义开机、服务异常、CarPlay断连的显示状态。
 - [ ] 验证长时间滚动、误触与输入延迟。
 
-## M4 · 供电（2–3h）
+## M4 · 能源模块与分离验证（2–3h）
 
 - [ ] 先用移动电源验证，记录供电端和板端电压。
 - [ ] 测量整机平均、峰值功耗、低电量行为。
 - [ ] 测量连续运行温升。
 - [ ] 根据实测选电池、电源板、线径和负载开关。
 - [ ] 验证正常关机与断电策略。
+- [ ] 验证能源模块可拆换、运算模块保留、显示模块独立连接，记录接口和故障行为。
 - [ ] 完成第二批采购。
 
 ## M5 · CAD与打印（5–8h）
@@ -63,7 +142,7 @@
 
 - [ ] 桌面验证完成后拆 CCPA 外壳并记录裸板尺寸。
 - [ ] 去面包板、飞线焊接、绝缘和固定。
-- [ ] 装配胸前主机、挂绳及光学支架。
+- [ ] 装配运算模块、能源接口、挂绳及光学支架。
 - [ ] 完成测试计划，记录续航、热、重连及黑屏结果。
 - [ ] 更新最终BOM、装配照片和版本号。
 

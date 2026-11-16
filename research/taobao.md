@@ -1,19 +1,43 @@
-# 淘宝产品检索
+# Sourcing index
 
-状态：用户已于2026-11-16提供对话全文，最终采用FastCarPlay + CPC200-CCPA + OL23 HDMI。两名subagent已完成本轮检索，找到6项有来源的配件商品链接候选；核心淘宝详情及所有候选的当前SKU/库存/价格仍未完成原站验证。
+English first; Chinese follows. Research date: 2026-11-16.
 
-## 当前检索
+## Scope and evidence
 
-- [核心模组候选](core-products.md)：OL23 HDMI套件和CPC200-CCPA。
-- [通用配件候选](accessories.md)：编码器、开关、线材和结构附件。
-- [采购基线](../hardware/BOM.md)：19项清单与购买条件。
+The prototype validates separate display, compute and energy modules. FastCarPlay + CPC200-CCPA + OL23 HDMI is the V1 demonstration path. Sourcing does not constitute physical compatibility validation or purchase authorization.
 
-用户原提供的[OL23短链接](https://e.tb.cn/h.jOTlUi1g4QEw6bB?tk=CqNr6V12DcF)是候选来源，未因用户提供而自动视为已验证。此前16针有线转无线PCBA不符合最终路线，不进入采购清单。
+- [Purchasing link list](../hardware/purchasing.md): one index covering the BOM.
+- [Core module research](core-products.md): OL23 HDMI kit and CPC200-CCPA.
+- [Accessory research](accessories.md): individual product links and original evidence.
+- [BOM](../hardware/BOM.md): quantities, estimated budget and ordering gates.
 
-## 访问记录（2026-11-16）
+Treat a manufacturer specification, a seller listing, a third-party indexed link and a search entry as different evidence. Only quote current price, SKU and stock when the actual page supports them. Search entries are not product detail pages.
 
-独立检索 subagent 尝试通过网页读取工具打开需求分享链接，返回 `Failed to fetch / Cache miss`，未取得对话正文。主代理此前的直接 HTTP 请求和浏览器打开尝试也未取得正文。
+## Source history
 
-上述是用户补充正文前的历史阻塞；现在已取得文本，原上传图片仍未取得。原规格书和商品版本需独立核验。
+The original shared discussion could not be fetched by the available web/browser tools. The user subsequently supplied its full text on 2026-11-16. Original uploaded images are still absent, so reported optical/driver dimensions require verification from the vendor. An older 16-pin wired-to-wireless adapter was rejected by the final plan.
 
-检索结果需包含：产品名称、商品详情页链接、店铺、规格、页面标价、检索日期、匹配依据和待核实项。搜索结果页不视为商品详情页；无法验证的信息需明确标注。
+No seller messages or purchases have been made. See the linked research documents for the most recent access results and specific gaps.
+
+---
+
+# 采购检索索引
+
+检索日期：2026-11-16。
+
+## 范围与证据
+
+项目验证显示、运算、能源模块分离；FastCarPlay + CPC200-CCPA + OL23 HDMI 是V1演示链路。检索结果不能代替实物兼容性验证，也不代表已下单。
+
+- [采购物品链接清单](../hardware/purchasing.md)：覆盖BOM的统一入口。
+- [核心模组核验](core-products.md)：OL23 HDMI套件与CPC200-CCPA。
+- [通用配件检索](accessories.md)：具体候选链接及原始来源。
+- [BOM](../hardware/BOM.md)：数量、预算估算及购买前确认项。
+
+区分厂家规格、商家详情、第三方索引候选和搜索入口。只有实际页面支持时才记录当前价格、SKU及库存；搜索页不算商品详情页。
+
+## 来源历史
+
+原分享链接通过当前网页/浏览器工具无法读取，用户随后于2026-11-16提供全文。原上传图片仍缺失，光学及驱动板尺寸需要商家原图复核。最终路线已排除早期16针有线转无线PCBA。
+
+未联系商家或购买。最新访问状态与缺失项见上方研究文件。

@@ -1,4 +1,42 @@
-# Zero 2 W 软件准备
+# Zero 2 W software preparation
+
+## English
+
+Use [niellun/FastCarPlay](https://github.com/niellun/FastCarPlay) and its [Pi setup guide](https://github.com/niellun/FastCarPlay/wiki/Raspbery-Pi-Setup) as the current workload for testing module separation. The compute module must expose documented video, power, and input interfaces rather than coupling its enclosure to the display or energy module.
+
+Review recorded on 2026-11-16: upstream targets Zero 2 W hardware decoding, and its guide lists CPC200-CCPA AutoKit. The README also uses the CCPM name. Validate the delivered hardware/firmware; do not assume every Carlinkit product is interchangeable.
+
+### Bench deployment order
+
+1. Prepare Pi OS Lite 64-bit following upstream guidance. Record OS, kernel, FFmpeg, and upstream commit; compatibility with any arbitrary latest OS is unconfirmed.
+2. Install upstream build dependencies, fetch source, and build release. Initially leave networking, partitioning, and overclocking unchanged.
+3. Insert CCPA and run `lsusb`. Configure udev and FastCarPlay with the actual VID:PID. udev uses hexadecimal; upstream settings use decimal.
+4. Validate wireless pairing, decoding, keyboard control, and reconnection on a normal monitor; retain logs.
+5. Pin a passing version before enabling autostart, GPIO service, and display control.
+
+Upstream code is not copied into this repository. Preserve its GPL-3.0 attribution and license if incorporating/modifying it later. This repository currently has no deployable receiver application or GPIO service.
+
+### Adaptation backlog
+
+| Input | Output/behavior |
+|---|---|
+| EC11 reverse/forward | Left / Right |
+| Encoder short press | Enter |
+| Back button | Backspace |
+| Blanking button | Local display control; no undefined CarPlay key |
+| CarPlay disconnect | Blank/disable the display branch; integrate and test the upstream disconnect hook |
+
+Mappings are confirmed in the [upstream README](https://github.com/niellun/FastCarPlay#keys). Proposed implementation: a Python GPIO library for inputs and evdev/uinput for a virtual keyboard. Dependencies, permissions, and systemd units are M3 work.
+
+Support for 640×400 HDMI input is unknown. Panel resolution is not HDMI timing support: read EDID and test scaling. Software black alone does not pass independent hardware-blanking acceptance. A display/energy disconnect must have a documented recovery path without reflashing the compute module.
+
+Audio/Siri require separate input/output device and CarPlay-routing validation; operation without audio peripherals is not promised.
+
+---
+
+# 中文 · Zero 2 W 软件准备
+
+FastCarPlay是模块分离验证的当前负载。运算模块须明确视频、电源和输入接口，不与显示或能源模块的外壳耦合。显示/能源断开后的恢复流程须记录，不应要求重刷运算模块。
 
 采用 [niellun/FastCarPlay](https://github.com/niellun/FastCarPlay) 和其 [Pi安装指南](https://github.com/niellun/FastCarPlay/wiki/Raspbery-Pi-Setup)。2026-11-16核查：上游目标包含Zero 2 W硬解码，指南列出CPC200-CCPA AutoKit。README也出现CCPM称呼，实际须按到货版本验证，不能假定所有Carlinkit产品通用。
 

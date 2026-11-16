@@ -1,3 +1,59 @@
+# Bill of materials
+
+[English](#bill-of-materials) | [中文](#采购清单)
+
+Purpose: validate the physical separation of display, compute, and energy modules. CarPlay is the V1 demonstration workload. The energy module starts as an external 5V power bank; only select a custom battery after measuring the system.
+
+All prices below are **planning estimates in CNY**, not verified live offers. Quantities include spares. See [purchasing links](purchasing.md) and [sourcing evidence](../research/taobao.md) before ordering. No purchase has been made by this project.
+
+## Batch 1 — bench and mechanical validation
+
+| ID | Item | Quantity | Estimated subtotal | Purchase gate |
+|---|---|---:|---:|---|
+| B01 | OL23 optical module + HDMI driver | 1 set | 600–1200 | HDMI, not AV; confirm connector, power and accepted timing |
+| B02 | Carlinkit CPC200-CCPA wireless AutoKit adapter | 1 | 150–300 | Confirm exact AutoKit hardware/firmware; ordinary U2W adapters are not substitutes |
+| B03 | Full-frame goggles | 1 | 40–100 | Measure internal clearance; select clear/tinted lenses for use case |
+| B04 | Bare EC11 encoder with push switch | 2 | 6–16 | One installed, one spare; confirm shaft dimensions for printed wheel |
+| B05 | 6×6mm tactile switch | 5 | 2–5 | Two installed, three spares; confirm height |
+| B06 | 400-point solderless breadboard | 1 | 5–10 | Bench only |
+| B07 | Dupont jumper wires | 1 set | 5–10 | Match male/female ends to headers |
+| B08 | 2.54mm GPIO header | 1 | 2–5 | Zero needs 2×20 if not already fitted |
+| B09 | Micro USB OTG to USB-A female short cable | 1 | 5–15 | USB host/data capability; connect to Zero data port |
+| B10 | Mini HDMI to confirmed OL23 input cable | 1 | 20–50 | Pi end is Type C Mini; OL23 end is unconfirmed |
+| B11 | 26/30AWG flexible wire | 1 set | 10–20 | Thin wire for signals; size power wiring from measured voltage drop |
+| B12 | 32GB microSD, if missing | 1 | 25–45 | Check existing card first |
+| B13 | M2/M2.5 screws and heat-set inserts | 1 set | 10–25 | Select after measuring mounting holes |
+| B14 | Heat-shrink and insulation | 1 set | 5–15 | Insulate and restrain soldered wires |
+| | **Batch 1 total** | | **885–1816** | Deduct existing parts |
+
+## Batch 2 — after measurements
+
+| ID | Item | Quantity | Estimated subtotal | Purchase gate |
+|---|---|---:|---:|---|
+| B15 | 60–80cm flexible HDMI harness | 1 | 30–80 | Connector types, bend radius and full-length signal validation |
+| B16 | Hollow lanyard and breakaway parts | 1 set | 10–25 | Cable must release along with the strap |
+| B17 | Protected 3000mAh Li-ion polymer battery | 1 | 35–70 | Peak current, dimensions, polarity, temperature |
+| B18 | USB-C charger and regulated 5V power board | 1 | 25–60 | Output capability, protection and load-sharing if needed |
+| B19 | 5V high-side load switch module | 1 | 5–15 | 3.3V logic compatibility, default state and backfeed behavior |
+| | **Batch 2 total** | | **105–250** | |
+| | **Overall estimate** | | **990–2066** | Excludes shipping, new tools and printing consumables |
+
+## Existing equipment and checks
+
+- Available: Zero 2 W, Pico 1 (unused in V1), 3D printer.
+- Check: reliable 5V power bank/supply, microSD, multimeter, soldering tools, PETG/TPU, ordinary HDMI monitor.
+- If a USB keyboard and CCPA are needed simultaneously, check for a USB hub; one OTG cable provides only one peripheral port.
+- Do not order a separate MFi chip, the earlier 16-pin wired-to-wireless PCBA, or finished wheels/button caps.
+- Keep the energy module detachable from the compute enclosure. A custom battery is optional; an external power bank is sufficient to validate this module boundary.
+
+## Questions before buying core parts (not sent to sellers)
+
+OL23: request actual HDMI kit photographs, connector model, accepted input timing/EDID, 5V current, included-part weights, mechanical drawings, brightness-control definition and original external-power modification diagram. Confirm whether 640×400 input is accepted or another input mode is scaled.
+
+CCPA: confirm the CPC200-CCPA wireless model for Android AutoKit, label/hardware/firmware version and USB VID:PID. Linux FastCarPlay support cannot be inferred solely from “wireless CarPlay.” Ask about return terms for incompatible hardware.
+
+---
+
 # 采购清单
 
 所有金额来自用户提供的方案预算，单位人民币，不是实时价格。商品验证见 [淘宝记录](../research/taobao.md)。采购状态均为待购买；已有设备不计价。
@@ -46,3 +102,5 @@
 OL23：请提供HDMI套件实际照片、接口型号、可接受输入时序/EDID、5V输入电流、包含组件重量、机械图、亮度接口定义和外接供电改法原图。请确认输入640×400是否直接支持，或需输入其他时序缩放。
 
 CCPA：请确认是可在安卓主机运行AutoKit的CPC200-CCPA无线版，提供铭牌/硬件版本/固件版本和USB VID:PID。我们以Linux FastCarPlay接入，不能仅以“支持无线CarPlay”判断兼容。询问不匹配时的退换条件。
+
+模块分离约束：能源模块需可从计算模块外壳拆离；独立移动电源即可完成该边界验证，自制电池不是V1前置条件。
