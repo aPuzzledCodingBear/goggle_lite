@@ -8,7 +8,7 @@ For sustained wear, minimize the complete head-borne assembly, not only the opti
 
 - goggles_mount: retain the original optics/FPC assembly; allow vertical, lateral, depth, and angle adjustment, then lock it.
 - driver_enclosure: place the HDMI driver near the frame/headband connection with connector clearance and strain relief.
-- pendant: Zero and CCPA form the compute module; power electronics and the future battery form the energy module. Keep separable interfaces, even if initially partitioned within one enclosure. Keep the battery away from heat and sharp edges.
+- pendant: Zero and CCPA form the compute module. A finished external USB power bank is the energy module; retain its original enclosure. Provide a detachable USB connection and strain relief, with no custom cell/charger compartment.
 - controls: print the EC11-compatible wheel, button caps, guides, and travel stops.
 - cable_retainer: use gentle bends and strain relief; cables must release when the neck strap breaks away.
 
@@ -28,7 +28,7 @@ The optical assembly must not contact the eye during slipping or impact. Reversi
 
 - goggles_mount：保留原厂光学组件和FPC整体；上下、左右、前后及角度可调，调整后锁定。
 - driver_enclosure：沿镜框/头带连接处布置HDMI板，留插拔空间和应力释放。
-- pendant：Zero和CCPA构成运算模块，电源板和后续电池构成能源模块；接口可分离，可先同仓分区固定，电池远离热源及锐边。
+- pendant：Zero和CCPA构成运算模块；成品外置USB充电宝为能源模块，保留原外壳。设计可拆离USB接口及应力释放，不设计裸电芯／充电板仓。
 - controls：EC11轴配合滚轮、按键帽、导向和限位均自行打印。
 - cable_retainer：线束缓弯、抗拉固定；挂绳脱离时线缆也需释放。
 

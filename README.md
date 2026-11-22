@@ -16,7 +16,7 @@ Three module boundaries are explicit:
 |---|---|---|
 | Display | OL23 optics + HDMI driver on goggles | HDMI video and separate regulated power; no head-mounted battery |
 | Compute | Existing Raspberry Pi Zero 2 W + CPC200-CCPA + GPIO controls | Receive/decode the demonstration workload and output HDMI |
-| Energy | External 5V power bank first; optional battery/management board later | Detachable supply to compute and display, with measured power and voltage drop |
+| Energy | USB 5V from an external power bank; no custom battery or charging board | Detachable supply to compute and display, with measured power and voltage drop |
 
 The compute and energy modules may share a chest mounting location, but remain separable assemblies with documented connectors. They are not required to share a single sealed enclosure. Modularity does not imply electrical isolation or hot-swap support.
 
@@ -37,9 +37,11 @@ flowchart LR
 
 ## V1 scope and status
 
-Use existing Zero 2 W and a 3D printer; Pico is not used. Validate controls on a breadboard, then solder point-to-point wiring. Print the wheel, button caps, mounts and enclosures. A custom PCB or battery pack is not required for the first demonstration.
+Latest: [2026-11-22 progress and next steps](docs/progress.md). Base image write/readback passed; Pi boot and FastCarPlay installation remain pending.
 
-**Status:** planning and sourcing research only. No deployment, purchase or physical validation is claimed. Optical specifications supplied in the original discussion have not been checked against the missing original images. Dimensions, weight, runtime and budgets are targets or estimates.
+Use existing Zero 2 W and a 3D printer; Pico is not used. Validate controls on a breadboard, then solder point-to-point wiring. Print the wheel, button caps, mounts and enclosures. No custom PCB, battery pack or charging board is planned for V1. USB power comes from an external power bank.
+
+**Status:** SD base-image preparation and readback verification completed; on-Pi software installation and end-to-end hardware validation are pending. Purchases/arrival are user-reported, with delivered versions still to be checked. Optical specifications supplied in the original discussion have not been checked against the missing original images. Dimensions, weight, runtime and budgets are targets or estimates.
 
 The first gates are the purchased AutoKit adapter's FastCarPlay compatibility, OL23 input timing/readability, and stable detachable power distribution. Keep an ordinary monitor available to test the compute path independently of the optics.
 
@@ -63,19 +65,19 @@ Upstream software: [niellun/FastCarPlay](https://github.com/niellun/FastCarPlay)
 
 **本项目是验证显示、运算与能源模块分离的验证原型。**
 
-V1 使用 CarPlay 导航作为演示负载；项目的核心是验证模块化架构，当前尚未完成实物部署、采购或测试。讨论中转述的光学参数尚未与原规格图片复核，尺寸、重量、续航及预算均为目标或估算。
+V1 使用 CarPlay 导航作为演示负载；项目的核心是验证模块化架构，当前已完成SD系统镜像刷写和读回校验，树莓派启动、软件安装和完整硬件验证仍待进行。采购／到货为用户报告，实物版本待核对。详见[2026-11-22进展与下一步](docs/progress.md)。讨论中转述的光学参数尚未与原规格图片复核，尺寸、重量、续航及预算均为目标或估算。
 
 | 模块 | V1 实现 | 验证边界 |
 |---|---|---|
 | 显示 | 风镜上的 OL23 光学组件 + HDMI 驱动板 | HDMI 视频与独立稳压供电，头部无电池 |
 | 运算 | 已有 Zero 2 W + CPC200-CCPA + GPIO 交互 | 接收并解码演示负载，输出 HDMI |
-| 能源 | 先用外置5V移动电源，后续可选电池及管理板 | 可拆离供电，测量功耗与线缆压降 |
+| 能源 | 外置充电宝经USB输出5V，不做自制电池或充电板 | 可拆离供电，测量功耗与线缆压降 |
 
 **长期佩戴眼镜是架构的现实出发点：头部模块应尽量轻、尽量小、尽量简单。**头部只留显示必需功能，运算、能源和控件外移。新增重量≤30g只是暂定上限，不能证明长时间舒适，见[佩戴需求论证与验证方法](docs/wearability.md)。
 
 运算和能源模块可以都固定在胸前，但应保持独立装配及明确连接器，不要求放在同一个封闭壳体内。模块化不等于电气隔离或支持热插拔。iPhone继续负责导航和应用层计算。
 
-本版不使用Pico、不做定制PCB。编码器与两个按键直接接Zero GPIO，面包板验证后飞线；滚轮、按键帽、支架和外壳自行3D打印。第一轮不需要自制电池组。
+本版不使用Pico、不做定制PCB。编码器与两个按键直接接Zero GPIO，面包板验证后飞线；滚轮、按键帽、支架和外壳自行3D打印。V1通过USB由充电宝供电，不做自制电池或充电管理板。
 
 优先验证具体AutoKit硬件版本的FastCarPlay兼容性、OL23输入时序与可读性、可拆离供电的稳定性。先用普通显示器独立验证运算链路，再接光学组件。
 

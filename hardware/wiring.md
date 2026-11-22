@@ -16,11 +16,13 @@ GPIO numbers are BCM. Connect passive switches/encoder contacts only between inp
 
 Connect encoder common to GND. The push switch has separate contacts. Confirm the actual EC11 pinout with a meter. Fit headers to an unpopulated Zero first; do not route battery/high-current power through breadboard rails.
 
+B05 uses a four-pin SPST-NO momentary tactile switch: identify the two internally joined pairs with a meter. Connect one distinct pair to GND and the other to GPIO23 or GPIO24. Using two contacts from the same pair grounds the input permanently.
+
 ## Module interfaces
 
 - **Compute:** Zero 2 W + CCPA + GPIO controls; CCPA connects through a USB-A female OTG cable to Zero's data port. The other Micro USB port powers Zero.
 - **Display:** OL23 + HDMI driver; retain the factory FPC between driver and optics. Extend verified HDMI, not raw RGB/FPC. Zero uses **Mini HDMI Type C**, not Micro Type D; confirm the OL23 connector before ordering.
-- **Energy:** external regulated 5V source with separate branches to compute and display. Start with one bench source, then test the intended detachable energy module. Record branch current, board-end voltage, connector polarity and power-off behavior.
+- **Energy:** external regulated 5V source with separate branches to compute and display. Use a finished power bank through USB 5V for the detachable energy module; no custom battery/charger. Verify total output, low-load auto-off and cable voltage drop. Do not request higher USB PD/QC voltage for the 5V branches. Record branch current, board-end voltage, connector polarity and power-off behavior.
 
 ## Power and shutdown
 
@@ -50,6 +52,8 @@ GPIO 编号为 BCM。仅无源编码器/开关接输入与GND，启用内部上�
 
 编码器公共端接GND；按压开关另外两脚为按键接点。EC11各家针位可能不同，先用万用表确认，不依据外观猜测。Zero若无排针先焊接排针，面包板阶段不把电池大电流走面包板轨道。
 
+B05采用常开自复位四脚轻触开关，四脚分为两组内部相连触点。先用万用表识别两组；一组接GND，另一组接GPIO23或GPIO24。不能把同一组内两脚分别接GPIO和GND，否则输入会常低。
+
 ## USB与HDMI
 
 - CCPA → USB-A母 OTG → Zero 的 USB 数据口；Zero另一Micro USB接口用于供电。
@@ -66,4 +70,4 @@ GPIO 编号为 BCM。仅无源编码器/开关接输入与GND，启用内部上�
 
 物理针脚参考：[Raspberry Pi官方GPIO文档](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#gpio)。
 
-模块边界：计算模块含Zero、CCPA及交互；显示模块含OL23及驱动板；能源模块为可拆离5V电源。先单一台架电源分支供电，再测目标独立能源模块。记录各支路电流、板端电压、极性和断电行为。可拆离指正常关机后可拆，不代表支持热插拔。
+模块边界：计算模块含Zero、CCPA及交互；显示模块含OL23及驱动板；能源模块为可拆离5V电源。独立能源模块固定为成品充电宝经USB输出5V，不自制电池或充电板；验证总输出、低负载自动关断及线缆压降，5V支路不请求USB PD/QC高压。记录各支路电流、板端电压、极性和断电行为。可拆离指正常关机后可拆，不代表支持热插拔。

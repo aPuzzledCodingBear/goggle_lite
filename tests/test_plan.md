@@ -19,7 +19,7 @@ All entries are targets, not executed results. Use the [measurement template](te
 | Recovery | Display off/on, CCPA reconnect, phone reconnect | No reflash or system reconfiguration |
 | Power/temperature | Navigation ≥2h; record ambient temperature and measurement points | Enclosure target ≤40°C; no thermal throttling/restarts |
 | Supply | Measure peaks, board voltage, low battery, shutdown | No undervoltage or abnormal power-loss damage |
-| Runtime | Full discharge at fixed brightness/workload | ≥2h after final battery integration |
+| Runtime | Run from the selected USB power bank at fixed brightness/workload until its normal cutoff | ≥2h with the documented power bank and USB cables; verify cutoff/restart behavior |
 | Mass | Include cables and fasteners | Added goggle mass ≤30g; chest assembly ≤150g |
 | Sustained wear | Compare unmodified eyewear and prototype in stationary 15/30/60-minute stages; stop on discomfort or unstable fit | Record duration, pressure/discomfort, slip/readjustments, image loss, cable drag and temperature; mass target alone is not a comfort pass |
 | Head-module packaging | Measure installed envelope/balance including plugs and supported cables; list local components | Minimize mass, protrusion and local functions without sacrificing clearance or alignment; justify retained components |
@@ -48,7 +48,7 @@ Do not conduct initial tests while cycling/driving on public roads. Outdoor dyna
 | 恢复 | 显示关开、CCPA重插、手机重连 | 无需重刷或重配系统 |
 | 功耗/温升 | 运行导航≥2h，记录环境温度和测点 | 外壳目标≤40°C，无热降频/重启 |
 | 供电 | 测峰值、板端电压、低电量、关机 | 无欠压和异常断电损坏 |
-| 续航 | 固定亮度与负载完整放电测试 | ≥2h（最终电池装配后） |
+| 续航 | 选定充电宝经USB供电，固定亮度与负载运行至正常截止 | ≥2h，记录充电宝及USB线，验证截止及恢复行为 |
 | 重量 | 含线材固定件称重 | 风镜新增≤30g；胸前≤150g |
 | 持续佩戴 | 原眼镜与原型对比，静止15/30/60分钟逐级试戴；不适或固定不稳即停 | 记录时长、压迫／不适、滑移／调整、画面丢失、线缆牵拉及温度；满足重量不等于舒适通过 |
 | 头部封装 | 测含插头及支撑线缆的包络／平衡，列本地部件 | 在不牺牲间隙与对准前提下减重、缩小、简化；说明部件保留理由 |

@@ -4,6 +4,8 @@
 
 The goal is modular display/compute/energy validation. CarPlay is the first workload. Estimated development effort is 18–29 hours, excluding shipping, compatibility problems, and rework. Completed items require evidence; planning is not a hardware test.
 
+Current checkpoint: [progress record](progress.md). SD base-image write/readback passed; first boot, software installation and hardware checks remain pending.
+
 ### M0 · Preparation (1–2h)
 
 - [x] Create the local Git project.
@@ -16,7 +18,8 @@ The goal is modular display/compute/energy validation. CarPlay is the first work
 
 ### M1 · CarPlay bench prototype (3–5h)
 
-- [ ] Choose a reproducible Raspberry Pi OS Lite version from the upstream guide; record image date/version.
+- [x] Select and record official Bookworm Lite 64-bit, 2026-10-06; complete image write and raw readback verification.
+- [ ] Confirm safe ejection, first boot, account setup and internet connection.
 - [ ] Fetch FastCarPlay, record its commit, and build release.
 - [ ] Connect CCPA through OTG; record VID:PID with lsusb and configure USB permissions.
 - [ ] Verify wireless pairing and hardware video decoding on a normal HDMI monitor.
@@ -48,7 +51,7 @@ Gate: HDMI timing compatibility and readability must pass before wearable geomet
 - [ ] Start with a power bank; record supply-side and board-side voltages.
 - [ ] Measure average/peak power and low-battery behavior.
 - [ ] Measure steady-state temperature rise.
-- [ ] Select battery, power board, wire gauge, and load switch from measurements.
+- [ ] Confirm USB power-bank 5V capability, USB cables, distribution wiring and optional display load switch from measurements; no battery/charger development.
 - [ ] Verify normal shutdown and power-removal strategy.
 - [ ] Verify replaceable energy, retained compute, and an independently connected display; record interfaces and failure behavior.
 - [ ] Purchase the second batch.
@@ -70,7 +73,7 @@ Gate: HDMI timing compatibility and readability must pass before wearable geomet
 - [ ] Execute the test plan; record runtime, heat, reconnection, and blanking.
 - [ ] Update the final BOM, assembly photos, and version.
 
-Next: verify B01/B02 and establish the normal-monitor bench chain. There are currently no recorded deliveries or hardware passes.
+Next: confirm safe removal, boot the Pi, run the prepared installer, and establish the normal-monitor bench chain. Parts receipt is user-reported; delivered versions and end-to-end hardware remain unverified.
 
 ---
 
@@ -79,6 +82,8 @@ Next: verify B01/B02 and establish the normal-monitor bench chain. There are cur
 目标是验证显示、运算及能源模块分离，CarPlay作为首个验证负载。
 
 开发估算18–29小时，不含到货、兼容问题及返工。完成项需有记录；不以规划文档代替实测。
+
+当前检查点见[进展记录](progress.md)：SD系统镜像刷写／读回已通过，首次启动、软件安装和硬件验证待完成。
 
 ## M0 · 准备（1–2h）
 
@@ -92,7 +97,8 @@ Next: verify B01/B02 and establish the normal-monitor bench chain. There are cur
 
 ## M1 · CarPlay 桌面原型（3–5h）
 
-- [ ] 选用上游安装指南可复现的 Raspberry Pi OS Lite，记录镜像日期/版本。
+- [x] 选定并记录官方Bookworm Lite 64位2026-10-06版，完成镜像写入及完整读回校验。
+- [ ] 确认安全推出、首次启动、账户设置及联网。
 - [ ] 拉取并记录 FastCarPlay commit，编译 release。
 - [ ] OTG 接 CCPA，用 lsusb 记录 VID:PID 并配置 USB 权限。
 - [ ] 普通 HDMI 显示器验证无线配对及视频硬解码。
@@ -124,7 +130,7 @@ Next: verify B01/B02 and establish the normal-monitor bench chain. There are cur
 - [ ] 先用移动电源验证，记录供电端和板端电压。
 - [ ] 测量整机平均、峰值功耗、低电量行为。
 - [ ] 测量连续运行温升。
-- [ ] 根据实测选电池、电源板、线径和负载开关。
+- [ ] 根据实测确认充电宝5V输出、USB线、分支供电线径及可选显示负载开关；不开发电池或充电板。
 - [ ] 验证正常关机与断电策略。
 - [ ] 验证能源模块可拆换、运算模块保留、显示模块独立连接，记录接口和故障行为。
 - [ ] 完成第二批采购。
@@ -146,4 +152,4 @@ Next: verify B01/B02 and establish the normal-monitor bench chain. There are cur
 - [ ] 完成测试计划，记录续航、热、重连及黑屏结果。
 - [ ] 更新最终BOM、装配照片和版本号。
 
-下一步：核实 B01/B02，完成普通显示器桌面链路。当前没有到货或实物通过项。
+下一步：确认安全移除，启动树莓派并执行已准备的安装脚本，再完成普通显示器桌面链路。到货为用户报告，实物版本和完整硬件链路仍未验证。

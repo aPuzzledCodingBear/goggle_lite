@@ -18,6 +18,7 @@ The head-worn module must be as light, small, and simple as practical because th
 - A bare EC11 push encoder and two back/blanking buttons connect directly to GPIO. Finger-contact mechanical parts are printed.
 - Breadboard first, soldered flying wires later; no custom PCB. The existing Pico 1 is unused.
 - The chest compute module receives and decodes video. The energy module supplies power; it may initially share the chest location, with separable interfaces. The neck harness carries HDMI and separate power; no head-mounted battery.
+- Energy is supplied by a finished USB power bank at 5V. No custom battery pack, charger or boost board is developed or purchased for V1.
 - PETG/TPU enclosures and mounts use reversible attachment where possible.
 
 ### Conversation-reported specifications — not independently verified
@@ -61,6 +62,7 @@ Source: [shared discussion](https://chatgpt.com/share/6afac55f-4244-83e8-bf40-7b
 - EC11 带按压裸编码器 + 返回/黑屏两个按键，GPIO 直连；机械手指接触件自行打印。
 - 面包板验证、飞线总装，无定制 PCB；Pico 1 本版闲置。
 - 胸前运算模块接收、解码；能源模块负责供电，初期可同处胸前但需保持可分离接口；挂脖线束承载 HDMI 和独立供电；头部无电池。
+- 能源固定为成品充电宝经USB输出5V；V1不自制或采购裸电池组、充电板及升压管理板。
 - 外壳及支架 PETG / TPU 打印，优先可逆固定。
 
 ## 对话转述的参数（未独立核验）
