@@ -1,0 +1,17 @@
+diff --git a/src/protocol/connection.cpp b/src/protocol/connection.cpp
+index d51785d..c15876f 100644
+--- a/src/protocol/connection.cpp
++++ b/src/protocol/connection.cpp
+@@ -446,7 +446,11 @@ libusb_device *Connection::link(libusb_device_handle *handler, uint8_t *epIn, ui
+     if (fail(libusb_reset_device(handler), " Can't reset device"))
+         return nullptr;
+ 
+-    if (fail(libusb_set_configuration(handler, 1), "Can't set configuration"))
++    int currentConfiguration = 0;
++    if (fail(libusb_get_configuration(handler, &currentConfiguration), "Can't get configuration"))
++        return nullptr;
++    if (currentConfiguration != 1 &&
++        fail(libusb_set_configuration(handler, 1), "Can't set configuration"))
+         return nullptr;
+ 
+     if (fail(libusb_claim_interface(handler, 0), "Can't claim interface"))

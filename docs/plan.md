@@ -4,7 +4,7 @@
 
 The goal is modular display/compute/energy validation. CarPlay is the first workload. Estimated development effort is 18–29 hours, excluding shipping, compatibility problems, and rework. Completed items require evidence; planning is not a hardware test.
 
-Current checkpoint: [progress record](progress.md). SD base-image write/readback passed; first boot, software installation and hardware checks remain pending.
+Current checkpoint: [progress record](progress.md). Normal HDMI CarPlay output and wireless pairing are working. Software input is the next bench check.
 
 ### M0 · Preparation (1–2h)
 
@@ -19,11 +19,12 @@ Current checkpoint: [progress record](progress.md). SD base-image write/readback
 ### M1 · CarPlay bench prototype (3–5h)
 
 - [x] Select and record official Bookworm Lite 64-bit, 2026-10-06; complete image write and raw readback verification.
-- [ ] Confirm safe ejection, first boot, account setup and internet connection.
-- [ ] Fetch FastCarPlay, record its commit, and build release.
-- [ ] Connect CCPA through OTG; record VID:PID with lsusb and configure USB permissions.
-- [ ] Verify wireless pairing and hardware video decoding on a normal HDMI monitor.
-- [ ] Verify Left/Right/Enter/Backspace, reconnection, and stability.
+- [x] Confirm boot, account login and internet connection on the working card.
+- [x] Fetch FastCarPlay, record its commit, apply the USB compatibility patch and build release.
+- [x] Connect CCPA through OTG; record VID:PID and configure USB permissions.
+- [x] Verify wireless pairing, normal HDMI picture and H.264 hardware decoder initialization.
+- [ ] Verify Left/Right/Enter/Backspace, beginning with the software input interface.
+- [ ] Meet the reconnect and cold-boot timing targets. One service restart reconnected in 22.56 s.
 
 Gate: stabilize the normal-monitor chain before optical integration. Do not remove the adapter enclosure yet.
 
@@ -73,7 +74,7 @@ Gate: HDMI timing compatibility and readability must pass before wearable geomet
 - [ ] Execute the test plan; record runtime, heat, reconnection, and blanking.
 - [ ] Update the final BOM, assembly photos, and version.
 
-Next: confirm safe removal, boot the Pi, run the prepared installer, and establish the normal-monitor bench chain. Parts receipt is user-reported; delivered versions and end-to-end hardware remain unverified.
+Next: verify software input on the working HDMI bench, then test the EC11 and buttons. Reconnect timing, cold boot and OL23 remain open.
 
 ---
 
@@ -83,7 +84,7 @@ Next: confirm safe removal, boot the Pi, run the prepared installer, and establi
 
 开发估算18–29小时，不含到货、兼容问题及返工。完成项需有记录；不以规划文档代替实测。
 
-当前检查点见[进展记录](progress.md)：SD系统镜像刷写／读回已通过，首次启动、软件安装和硬件验证待完成。
+当前检查点见[进展记录](progress.md)：普通 HDMI 屏的 CarPlay 画面和无线配对已确认。下一步验证软件输入。
 
 ## M0 · 准备（1–2h）
 
@@ -98,11 +99,12 @@ Next: confirm safe removal, boot the Pi, run the prepared installer, and establi
 ## M1 · CarPlay 桌面原型（3–5h）
 
 - [x] 选定并记录官方Bookworm Lite 64位2026-10-06版，完成镜像写入及完整读回校验。
-- [ ] 确认安全推出、首次启动、账户设置及联网。
-- [ ] 拉取并记录 FastCarPlay commit，编译 release。
-- [ ] OTG 接 CCPA，用 lsusb 记录 VID:PID 并配置 USB 权限。
-- [ ] 普通 HDMI 显示器验证无线配对及视频硬解码。
-- [ ] 验证 Left / Right / Enter / Backspace、重连和运行稳定性。
+- [x] 确认工作卡可启动、账户能登录并可联网。
+- [x] 固定 FastCarPlay 提交，应用 USB 兼容补丁并编译 release。
+- [x] OTG 接 CCPA，记录 VID:PID 并配置 USB 权限。
+- [x] 验证无线配对、普通 HDMI 画面及 H.264 硬解码器初始化。
+- [ ] 先验证软件输入的左、右、确认和返回。
+- [ ] 达到重连和冷启动目标。一次软件重启后 22.56 秒重连。
 
 关卡：普通屏链路稳定后才进入光学集成；不要提前拆壳。
 
@@ -152,4 +154,4 @@ Next: confirm safe removal, boot the Pi, run the prepared installer, and establi
 - [ ] 完成测试计划，记录续航、热、重连及黑屏结果。
 - [ ] 更新最终BOM、装配照片和版本号。
 
-下一步：确认安全移除，启动树莓派并执行已准备的安装脚本，再完成普通显示器桌面链路。到货为用户报告，实物版本和完整硬件链路仍未验证。
+下一步是在现有 HDMI 台架验证软件输入，再测试 EC11 和实物按键。重连计时、冷启动及 OL23 尚待验证。

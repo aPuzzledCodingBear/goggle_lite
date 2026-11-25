@@ -37,11 +37,11 @@ flowchart LR
 
 ## V1 scope and status
 
-Latest: [2026-11-22 progress and next steps](docs/progress.md). Base image write/readback passed; Pi boot and FastCarPlay installation remain pending.
+Latest: [2026-11-25 progress and next steps](docs/progress.md). Wireless CarPlay and ordinary HDMI output are working on the Zero 2 W. Input is the next bench check.
 
 Use existing Zero 2 W and a 3D printer; Pico is not used. Validate controls on a breadboard, then solder point-to-point wiring. Print the wheel, button caps, mounts and enclosures. No custom PCB, battery pack or charging board is planned for V1. USB power comes from an external power bank.
 
-**Status:** SD base-image preparation and readback verification completed; on-Pi software installation and end-to-end hardware validation are pending. Purchases/arrival are user-reported, with delivered versions still to be checked. Optical specifications supplied in the original discussion have not been checked against the missing original images. Dimensions, weight, runtime and budgets are targets or estimates.
+**Status:** Bookworm boot and local FastCarPlay build passed. The user confirmed wireless pairing and a normal CarPlay picture. One software restart reconnected in 22.56 s, exceeding the 15 s target on that timing basis. Purchases/arrival are user-reported, with delivered versions still to be checked. Optical specifications supplied in the original discussion have not been checked against the missing original images. Dimensions, weight, runtime and budgets are targets or estimates.
 
 The first gates are the purchased AutoKit adapter's FastCarPlay compatibility, OL23 input timing/readability, and stable detachable power distribution. Keep an ordinary monitor available to test the compute path independently of the optics.
 
@@ -59,13 +59,13 @@ All maintained documents present English first and Chinese second.
 - [Validation plan](tests/test_plan.md) and [result template](tests/test_results/README.md)
 - [Sourcing index](research/taobao.md), [core modules](research/core-products.md), [accessories](research/accessories.md)
 
-Upstream software: [niellun/FastCarPlay](https://github.com/niellun/FastCarPlay). Its code is not vendored here; upstream licensing continues to apply if it is incorporated later.
+Upstream software: [niellun/FastCarPlay](https://github.com/niellun/FastCarPlay). The [bench setup](host/README.md) pins the upstream revision and applies a small USB compatibility patch under the upstream GPL v3 license.
 
 ## 中文说明
 
 **本项目是验证显示、运算与能源模块分离的验证原型。**
 
-V1 使用 CarPlay 导航作为演示负载；项目的核心是验证模块化架构，当前已完成SD系统镜像刷写和读回校验，树莓派启动、软件安装和完整硬件验证仍待进行。采购／到货为用户报告，实物版本待核对。详见[2026-11-22进展与下一步](docs/progress.md)。讨论中转述的光学参数尚未与原规格图片复核，尺寸、重量、续航及预算均为目标或估算。
+V1 使用 CarPlay 导航作为演示负载；项目的核心是验证模块化架构，当前已在 Zero 2 W 上完成 Bookworm 启动和 FastCarPlay 本机编译，用户确认手机无线连接和普通 HDMI 画面正常。单次软件重启后手机自动连回用时 22.56 秒，按此次口径超过 15 秒目标。下一步验证输入。详见[2026-11-25 进展与下一步](docs/progress.md)。讨论中转述的光学参数尚未与原规格图片复核，尺寸、重量、续航及预算均为目标或估算。
 
 | 模块 | V1 实现 | 验证边界 |
 |---|---|---|
