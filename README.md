@@ -37,7 +37,7 @@ flowchart LR
 
 ## V1 scope and status
 
-Latest: [2026-11-25 progress and next steps](docs/progress.md). Wireless CarPlay and ordinary HDMI output are working on the Zero 2 W. Input is the next bench check.
+Wireless CarPlay and standard HDMI output work on the Zero 2 W. The EC11 and return button can control CarPlay on the bench. Screen behavior after restart and formal input acceptance remain open. [2026-11-27 progress and next steps](docs/progress.md)
 
 Use existing Zero 2 W and a 3D printer; Pico is not used. Validate controls on a breadboard, then solder point-to-point wiring. Print the wheel, button caps, mounts and enclosures. No custom PCB, battery pack or charging board is planned for V1. USB power comes from an external power bank.
 
@@ -65,7 +65,7 @@ Upstream software: [niellun/FastCarPlay](https://github.com/niellun/FastCarPlay)
 
 **本项目是验证显示、运算与能源模块分离的验证原型。**
 
-V1 使用 CarPlay 导航作为演示负载；项目的核心是验证模块化架构，当前已在 Zero 2 W 上完成 Bookworm 启动和 FastCarPlay 本机编译，用户确认手机无线连接和普通 HDMI 画面正常。单次软件重启后手机自动连回用时 22.56 秒，按此次口径超过 15 秒目标。下一步验证输入。详见[2026-11-25 进展与下一步](docs/progress.md)。讨论中转述的光学参数尚未与原规格图片复核，尺寸、重量、续航及预算均为目标或估算。
+V1 使用 CarPlay 导航作为演示负载，验证模块化架构。Zero 2 W 已完成 Bookworm 启动和 FastCarPlay 本机编译，无线 CarPlay 与普通 HDMI 画面已确认。EC11 和独立返回键已能控制台架画面，重启后的屏幕表现和输入整体验收仍待验证。单次软件重启后手机自动连回用时 22.56 秒，按此次口径超过 15 秒目标。讨论中转述的光学参数尚未与原规格图片复核，尺寸、重量、续航及预算均为目标或估算。[2026-11-27 进展与下一步](docs/progress.md)
 
 | 模块 | V1 实现 | 验证边界 |
 |---|---|---|

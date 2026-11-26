@@ -1,6 +1,17 @@
-# Progress · 2026-11-25
+# Progress · 2026-11-27
 
 ## English
+
+### 2026-11-27 · Physical controls
+
+- Software input over the FastCarPlay FIFO passed for Left, Right, Enter, and Backspace on the standard HDMI bench. The EC11 and a separate return button then controlled CarPlay through the same path in two short bench runs.
+- Rotation initially pulled the encoder's switch input low with the module supply floating. With the module supplied at 3.3 V, ten detents produced no switch event. A separate press still registered.
+- A Linux `uinput` bridge was tested on the Pi. Two four-action runs completed with matching Linux input events. The revised launcher passed an on-device module reload and a permissions rollback followed by re-enablement.
+- GPIO integration is still under acceptance testing. After a bridge restart, the Linux direction events matched the requested inputs, but the displayed movement did not. Another run recorded two Backspace taps before the display returned from the phone app to the grid. The 30 fps recording supports diagnosis. The latency test requires at least 60 fps.
+
+Next, reproduce the screen behavior from a known focus position. Then check rapid reversal, 100 consecutive button presses, and the ≤200 ms display-response target. The [acceptance plan](../tests/test_plan.md) lists the bench targets.
+
+### 2026-11-25 · Wireless HDMI bench
 
 The Zero 2 W receives wireless CarPlay from an iPhone through a CPC200-CCPA and outputs it to a standard HDMI monitor. The user confirmed pairing and a normal picture. The project still validates display, compute and energy as separable modules, with CarPlay as the V1 workload.
 
@@ -11,13 +22,22 @@ The Zero 2 W receives wireless CarPlay from an iPhone through a CPC200-CCPA and 
 | USB receiver | The box enumerated as `1314:1521`. FastCarPlay opened it as a regular user after the scoped udev rule and USB configuration patch. |
 | HDMI and decoder | The user confirmed the standard monitor showed a normal CarPlay picture. H.264 initialized through `h264_v4l2m2m` and `bcm2835-codec-decode`. Frame timing and sustained decode performance were not measured. |
 | Reconnect | The iPhone automatically reconnected in **22.56 s** from starting the new FastCarPlay service, including **18.68 s** to USB box recognition and **3.88 s** from USB recognition to the phone-connected event. This single software-restart sample exceeded the **15 s** target on that timing basis. Five-run repeatability, screen recovery timing and cold boot remain open. |
-| Remaining gates | Software input, physical GPIO controls, display blanking, OL23 integration, audio behavior, detachable power and wear testing still need validation. |
+| Remaining gates at this checkpoint | Software input, physical GPIO controls, display blanking, OL23 integration, audio behavior, detachable power and wear testing were still open. |
 
 The original image passed exact-length readback on the Mac. Earlier first-boot MMC errors were followed by a mismatch between the card's disk identifier and its boot and mount configuration. Restoring the expected identifier enabled boot on the 16 GB card. The earlier intermittent I/O faults were not isolated. Card health, cold starts and sustained reliability are still open.
 
-Next, use the existing HDMI bench to verify left, right, select and back through the receiver's software input interface. Then test the EC11 and physical back button. Use the [bench deployment guide](../host/README.md) and [acceptance plan](../tests/test_plan.md).
-
 ## 中文
+
+### 2026-11-27 · 实体控件
+
+- 普通 HDMI 台架通过 FastCarPlay FIFO 验证了左、右、确认和返回。随后接入 EC11 和独立返回键，通过同一路径完成两轮快速台架验证。
+- 模块电源悬空时，旋转会带动确认输入拉低。模块接 3.3 V 后，复测转动 10 格均未触发确认，单独按压仍有信号。
+- Pi 上已试用 Linux `uinput` 桥接。两轮四个屏幕动作均完成，Linux 输入日志与操作一致。修订后的启动器通过了实机内核模块重新加载、权限回退及重新启用检查。
+- 实体控件仍在验收。一次桥接重启后，Linux 方向键事件符合操作，屏幕移动却出现异常。另一次实测中，Pi 收到两次 Backspace，画面第二次才从电话应用返回图标页。现有 30 fps 录像可用于排查，延迟验收要求至少 60 fps。
+
+下一步从明确的焦点位置复现屏幕异常，再测快速反转、连续 100 次按压和 ≤200 ms 的画面响应。[验收计划](../tests/test_plan.md)
+
+### 2026-11-25 · 无线 HDMI 台架
 
 Zero 2 W 已能通过 CPC200-CCPA 接收 iPhone 无线 CarPlay，并输出到普通 HDMI 显示器。用户确认配对成功、画面正常。项目继续用 CarPlay 验证显示、运算和能源模块分离。
 
@@ -28,8 +48,6 @@ Zero 2 W 已能通过 CPC200-CCPA 接收 iPhone 无线 CarPlay，并输出到普
 | USB 盒子 | 实物枚举为 `1314:1521`。配置专用 udev 规则并应用 USB 补丁后，FastCarPlay 以普通账号打开盒子。 |
 | HDMI 与解码 | 用户确认普通屏的 CarPlay 画面正常。H.264 经 `h264_v4l2m2m` 和 `bcm2835-codec-decode` 成功初始化。帧时序和持续解码性能尚未测量。 |
 | 重连 | 单次软件重启，从启动新 FastCarPlay 服务到手机协议连上共 **22.56 秒**，其中识别盒子 **18.68 秒**，盒子识别到手机连上 **3.88 秒**。以此次计时口径超过 **15 秒**目标。五轮复测、画面恢复计时和冷启动尚未完成。 |
-| 待验证 | 软件输入、GPIO 实物控件、显示黑屏、OL23、音频、可拆离供电和佩戴测试。 |
+| 当时待验证 | 软件输入、GPIO 实物控件、显示黑屏、OL23、音频、可拆离供电和佩戴测试。 |
 
 原版镜像曾在 Mac 上通过完整镜像范围读回校验。早期首次启动出现 MMC 写入错误，随后发现卡的磁盘编号与启动、挂载配置不一致。恢复预期编号后，16 GB 卡可以启动。此前的间歇 I/O 错误尚未归因，整卡健康、冷启动和持续可靠性仍待验证。
-
-下一步在现有 HDMI 台架验证左、右、确认、返回的软件输入，再接 EC11 和实物返回键。[部署指南](../host/README.md) · [验收计划](../tests/test_plan.md)
