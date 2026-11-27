@@ -25,7 +25,7 @@ flowchart LR
   Phone[iPhone: apps and navigation] -->|Wireless CarPlay| CCPA[CPC200-CCPA]
   subgraph Compute[Compute module]
     CCPA -->|USB OTG| Pi[Zero 2 W / FastCarPlay]
-    Controls[EC11 + two buttons] -->|GPIO| Pi
+    Controls[Two EC11 encoders + buttons] -->|GPIO| Pi
   end
   subgraph Display[Display module]
     Driver[HDMI driver] -->|Factory FPC| Optics[OL23 optics]
@@ -37,7 +37,7 @@ flowchart LR
 
 ## V1 scope and status
 
-Wireless CarPlay and standard HDMI output work on the Zero 2 W. The EC11 and return button can control CarPlay on the bench. Screen behavior after restart and formal input acceptance remain open. [2026-11-27 progress and next steps](docs/progress.md)
+Wireless CarPlay and two-axis EC11 control work on the Zero 2 W with the standard HDMI monitor. Short prototype reversal and axis-switching checks passed. The next step is identifying the optical driver's HDMI input and power requirements. [2026-11-27 progress and next steps](docs/progress.md)
 
 Use existing Zero 2 W and a 3D printer; Pico is not used. Validate controls on a breadboard, then solder point-to-point wiring. Print the wheel, button caps, mounts and enclosures. No custom PCB, battery pack or charging board is planned for V1. USB power comes from an external power bank.
 
@@ -65,7 +65,7 @@ Upstream software: [niellun/FastCarPlay](https://github.com/niellun/FastCarPlay)
 
 **本项目是验证显示、运算与能源模块分离的验证原型。**
 
-V1 使用 CarPlay 导航作为演示负载，验证模块化架构。Zero 2 W 已完成 Bookworm 启动和 FastCarPlay 本机编译，无线 CarPlay 与普通 HDMI 画面已确认。EC11 和独立返回键已能控制台架画面，重启后的屏幕表现和输入整体验收仍待验证。单次软件重启后手机自动连回用时 22.56 秒，按此次口径超过 15 秒目标。讨论中转述的光学参数尚未与原规格图片复核，尺寸、重量、续航及预算均为目标或估算。[2026-11-27 进展与下一步](docs/progress.md)
+V1 使用 CarPlay 导航作为演示负载，验证模块化架构。Zero 2 W 上的无线 CarPlay 和普通 HDMI 画面已验证，两只 EC11 已在台架上完成左右、上下、反转和双轴切换短测。下一步核对光波导驱动板的 HDMI 输入和供电。单次软件重启后手机自动连回用时 22.56 秒，按此次口径超过 15 秒目标。尺寸、重量、续航及预算仍为目标或估算。[2026-11-27 进展与下一步](docs/progress.md)
 
 | 模块 | V1 实现 | 验证边界 |
 |---|---|---|

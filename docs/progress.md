@@ -7,9 +7,10 @@
 - Software input over the FastCarPlay FIFO passed for Left, Right, Enter, and Backspace on the standard HDMI bench. The EC11 and a separate return button then controlled CarPlay through the same path in two short bench runs.
 - Rotation initially pulled the encoder's switch input low with the module supply floating. With the module supplied at 3.3 V, ten detents produced no switch event. A separate press still registered.
 - A Linux `uinput` bridge was tested on the Pi. Two four-action runs completed with matching Linux input events. The revised launcher passed an on-device module reload and a permissions rollback followed by re-enablement.
-- GPIO integration is still under acceptance testing. After a bridge restart, the Linux direction events matched the requested inputs, but the displayed movement did not. Another run recorded two Backspace taps before the display returned from the phone app to the grid. The 30 fps recording supports diagnosis. The latency test requires at least 60 fps.
+- With hardware decoding, one leftward move appeared only after a long delay. Three subsequent runs with software decoding and forced redraw showed the intended moves without the earlier seconds-long delay. On the Phone Favorites page, the first Backspace focused the Favorites tab and the second returned to the app grid.
+- The second EC11 adds Up and Down. Three short HDMI bench checks passed. X turned three detents each way with immediate reversal, Y moved down and up once, and alternating the axes moved right, down, left and up. Each returned the focus to its starting point and matched the Linux input sequence. The longer press-count, restart and quantitative latency checks remain open.
 
-Next, reproduce the screen behavior from a known focus position. Then check rapid reversal, 100 consecutive button presses, and the ≤200 ms display-response target. The [acceptance plan](../tests/test_plan.md) lists the bench targets.
+Next, identify the optical driver board's HDMI input connector and power requirements before connecting it. The Pi end uses Mini HDMI (Type C). Verify the driver input timing and CarPlay readability on the bench before mounting the optics.
 
 ### 2026-11-25 · Wireless HDMI bench
 
@@ -33,9 +34,10 @@ The original image passed exact-length readback on the Mac. Earlier first-boot M
 - 普通 HDMI 台架通过 FastCarPlay FIFO 验证了左、右、确认和返回。随后接入 EC11 和独立返回键，通过同一路径完成两轮快速台架验证。
 - 模块电源悬空时，旋转会带动确认输入拉低。模块接 3.3 V 后，复测转动 10 格均未触发确认，单独按压仍有信号。
 - Pi 上已试用 Linux `uinput` 桥接。两轮四个屏幕动作均完成，Linux 输入日志与操作一致。修订后的启动器通过了实机内核模块重新加载、权限回退及重新启用检查。
-- 实体控件仍在验收。一次桥接重启后，Linux 方向键事件符合操作，屏幕移动却出现异常。另一次实测中，Pi 收到两次 Backspace，画面第二次才从电话应用返回图标页。现有 30 fps 录像可用于排查，延迟验收要求至少 60 fps。
+- 硬解码时曾出现左移长延迟。后续用软件解码和强制刷新做的三轮对照中，方向正确，未再复现秒级延迟。电话收藏页第一次收到 Backspace 时会聚焦 Favorites 标签，第二次才回到图标页。
+- 第二只 EC11 控制上下。普通 HDMI 台架的三项原型短测均通过，分别是 X 轴连续顺拧三格并立刻反拧三格、Y 轴下和上各一格，以及双轴交替右、下、左、上一圈。每项都回到起点，画面与 Linux 输入序列一致。长次数按压、完整重启验证和量化延迟仍未完成。
 
-下一步从明确的焦点位置复现屏幕异常，再测快速反转、连续 100 次按压和 ≤200 ms 的画面响应。[验收计划](../tests/test_plan.md)
+下一步核对光波导驱动板的 HDMI 输入接口和供电要求。Pi 端是 Mini HDMI（Type C）。确认规格后，先在桌面验证驱动板输入时序和 CarPlay 文字可读性，再考虑安装光波导。
 
 ### 2026-11-25 · 无线 HDMI 台架
 
