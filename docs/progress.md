@@ -10,7 +10,11 @@
 - With hardware decoding, one leftward move appeared only after a long delay. Three subsequent runs with software decoding and forced redraw showed the intended moves without the earlier seconds-long delay. On the Phone Favorites page, the first Backspace focused the Favorites tab and the second returned to the app grid.
 - The second EC11 adds Up and Down. Three short HDMI bench checks passed. X turned three detents each way with immediate reversal, Y moved down and up once, and alternating the axes moved right, down, left and up. Each returned the focus to its starting point and matched the Linux input sequence. The longer press-count, restart and quantitative latency checks remain open.
 
-Next, identify the optical driver board's HDMI input connector and power requirements before connecting it. The Pi end uses Mini HDMI (Type C). Verify the driver input timing and CarPlay readability on the bench before mounting the optics.
+### 2026-11-27 · OL23 waveguide
+
+- The Pi identified the HDMI driver as `OL23B`. The external connection to the driver was HDMI alone. A 720p60 pattern was visible, followed by the FastCarPlay waiting screen and wireless CarPlay at the same timing. The display-mode override applies to the current boot only. See the [wiring record](../hardware/wiring.md).
+- On the waveguide, alternating the two encoders moved focus right, down, left and up and returned it to the starting icon. The Pi logged the same sequence. The icon names and focus outline were legible.
+- In the wear trial, the full image was visible and text was legible. The existing mount and lens contours differ, and the image appears to the right of center. Mount geometry and boot-time display recovery remain open.
 
 ### 2026-11-25 · Wireless HDMI bench
 
@@ -37,7 +41,11 @@ The original image passed exact-length readback on the Mac. Earlier first-boot M
 - 硬解码时曾出现左移长延迟。后续用软件解码和强制刷新做的三轮对照中，方向正确，未再复现秒级延迟。电话收藏页第一次收到 Backspace 时会聚焦 Favorites 标签，第二次才回到图标页。
 - 第二只 EC11 控制上下。普通 HDMI 台架的三项原型短测均通过，分别是 X 轴连续顺拧三格并立刻反拧三格、Y 轴下和上各一格，以及双轴交替右、下、左、上一圈。每项都回到起点，画面与 Linux 输入序列一致。长次数按压、完整重启验证和量化延迟仍未完成。
 
-下一步核对光波导驱动板的 HDMI 输入接口和供电要求。Pi 端是 Mini HDMI（Type C）。确认规格后，先在桌面验证驱动板输入时序和 CarPlay 文字可读性，再考虑安装光波导。
+### 2026-11-27 · OL23 光波导
+
+- Pi 识别到 HDMI 驱动板自报 `OL23B`。驱动板对外只接 HDMI。720p60 彩条可见，随后同一时序下显示了 FastCarPlay 等待页和无线 CarPlay。显示模式覆盖仅在本次开机有效。[接线记录](../hardware/wiring.md)
+- 通过光波导看到双旋钮依次使焦点右、下、左、上并回到起点。Pi 日志一致，图标名称和选中框清晰。
+- 正常佩戴能看全，文字清晰。现有支架与镜片轮廓有出入，画面偏右。支架形状、位置以及重启后自动恢复画面仍待确认。
 
 ### 2026-11-25 · 无线 HDMI 台架
 
