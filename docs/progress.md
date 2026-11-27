@@ -2,6 +2,13 @@
 
 ## English
 
+### 2026-11-27 · Control-panel PCB draft
+
+- The power-bank-only box uses a removable panel for the two encoders and Back button. A keyed eight-way harness connects the panel to a passive Pi adapter. [Box arrangement](../mechanical/README.md) · [Electrical draft and trial template](../hardware/control-panel/README.md)
+- Both draft schematics passed KiCad 10.0.8 ERC with zero errors or warnings. The exported netlists matched the expected connections and no-connects at all 68 pins. Prototype layout, physical mating, PCB DRC and fabrication output remain open.
+- The EC11 side-view estimate is approximately 1 mm from the module PCB top to the pin center and 6 mm from the header housing to the pin tip. The next step is to lay out the two boards and an adjustable carrier for a 2.54 mm right-angle socket trial, then lock the fit on actual parts before fabrication. [Draft parts list](../hardware/control-panel/procurement.md)
+- Continue control-box development on the existing small HDMI display. Revisit the OL23 and its adjustable mount separately.
+
 ### 2026-11-27 · Physical controls
 
 - Software input over the FastCarPlay FIFO passed for Left, Right, Enter, and Backspace on the standard HDMI bench. The EC11 and a separate return button then controlled CarPlay through the same path in two short bench runs.
@@ -32,6 +39,13 @@ The Zero 2 W receives wireless CarPlay from an iPhone through a CPC200-CCPA and 
 The original image passed exact-length readback on the Mac. Earlier first-boot MMC errors were followed by a mismatch between the card's disk identifier and its boot and mount configuration. Restoring the expected identifier enabled boot on the 16 GB card. The earlier intermittent I/O faults were not isolated. Card health, cold starts and sustained reliability are still open.
 
 ## 中文
+
+### 2026-11-27 · 控制面板 PCB 草案
+
+- 控制盒固定使用外置充电宝，两个旋钮和返回键放在可拆面板上。带防反插的 8 芯线束连接面板与 Pi 无源转接板。[盒体方案](../mechanical/README.md) · [原理图和试摆图](../hardware/control-panel/README.md)
+- 两份草案通过 KiCad 10.0.8 ERC，零错误、零警告。导出网表的 68 个引脚逐一符合预期。板布局、实物配合、PCB DRC 和制造文件仍待完成。
+- 侧照换算的 EC11 试装估值为针中心高出模块 PCB 上表面约 1 mm、裸露针长约 6 mm。下一步做两板布局和可调托架，按 2.54 mm 直角母座试配，再用实物确认后定稿。[采购初稿](../hardware/control-panel/procurement.md)
+- 控制盒后续先用现有的小 HDMI 显示器继续，OL23 和可调支架单独推进。
 
 ### 2026-11-27 · 实体控件
 

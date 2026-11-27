@@ -12,6 +12,14 @@ For sustained wear, minimize the complete head-borne assembly, not only the opti
 - controls: print the EC11-compatible wheel, button caps, guides, and travel stops.
 - cable_retainer: use gentle bends and strain relief; cables must release when the neck strap breaks away.
 
+### Power and CarPlay control box
+
+Use a finished external USB power bank as the 5 V source. The box exposes a power input and HDMI output. The iPhone connects wirelessly to the CPC200-CCPA, which sits inside the box and connects to the Pi Zero 2 W over USB OTG. Keep the USB data port and 5 V power input clearly distinct during assembly. Use the existing verified HDMI cable for the first enclosure fit. The two encoders and Back button form a removable control panel. Vehicle electrical integration is outside the project scope.
+
+### OL23 clip-on prototype
+
+Start with a removable, padded clip on an accessible rigid frame edge. A separate carrier supports the OL23 housing on its mechanical surfaces and keeps the optical area and FPC clear. Use a lateral slot and a replaceable wedge shim to try different offsets and angles before fixing the geometry. Anchor the cable to the frame so cable pull does not rotate the carrier. This concept assumes the frame has a suitable clip surface. Measure that edge's thickness, usable length and cross-section, plus the OL23 housing's support surfaces and the worn eye clearance, before making CAD.
+
 Measure mounting holes, maximum component heights, connector/plug envelopes, goggle depth, and eye clearances before enclosure design. Approximately 80×50×30mm is a target, not a final dimension. PETG provides rigid structures; TPU provides cushioning. Test printed fits before assembly.
 
 The optical assembly must not contact the eye during slipping or impact. Reversible modification does not preserve the goggle's original impact certification. Initial validation is stationary in a controlled environment.
@@ -31,6 +39,14 @@ The optical assembly must not contact the eye during slipping or impact. Reversi
 - pendant：Zero和CCPA构成运算模块；成品外置USB充电宝为能源模块，保留原外壳。设计可拆离USB接口及应力释放，不设计裸电芯／充电板仓。
 - controls：EC11轴配合滚轮、按键帽、导向和限位均自行打印。
 - cable_retainer：线束缓弯、抗拉固定；挂绳脱离时线缆也需释放。
+
+### 供电与 CarPlay 控制盒
+
+成品充电宝在盒外提供 5 V，盒体对外留电源输入和 HDMI 输出。iPhone 无线连接盒内的 CPC200-CCPA，CCPA 经 USB OTG 接 Pi Zero 2 W 的数据口，充电宝接 Pi 的 `PWR IN` 口。首版用现有已验证的 HDMI 线试装。两个旋钮和独立返回键组成可拆控制面板。项目供电范围固定为充电宝。
+
+### OL23 眼镜夹式原型
+
+首版采用可拆软垫夹和独立托座。先按镜框有一段可夹持的硬边考虑，有实物后再定夹位。夹子咬合镜框，托座承托 OL23 外壳的结构面，给光学区和原厂 FPC 留出空间。托座用横向长孔试左右偏移，用可更换的楔形垫片试角度。线缆固定在镜框侧，避免牵拉托座。建模前记录夹位的边缘厚度、可夹长度和截面，OL23 外壳可承托的轮廓，以及佩戴时托座与眼睛的间隙。
 
 先测量板孔、最高器件、连接器及插头包络、风镜净深和眼部间隙，再设计壳体。目标约80×50×30mm不是定稿尺寸。PETG做硬结构，TPU做缓冲，测试打印配合后再总装。
 

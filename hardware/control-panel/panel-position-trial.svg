@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="137mm" height="130mm" viewBox="0 0 137 130">
+<title>Goggle Lite control panel position trial</title>
+<style>text { fill:#111; stroke:none; font:3px sans-serif; }</style>
+<g stroke="#111" stroke-width="0.22" fill="none">
+  <text x="15" y="10">Goggle Lite - front view - position trial only</text>
+  <text x="15" y="15">Print 100%. Verify both 100 mm rulers. Do not drill from this sheet.</text>
+  <rect x="15" y="25" width="94" height="44" stroke-dasharray="2 1" />
+  <circle cx="34" cy="47" r="9" stroke-dasharray="1 1" />
+  <path d="M 31 47 h 6 M 34 44 v 6" />
+  <text x="34" y="62" text-anchor="middle">X</text><circle cx="67" cy="47" r="9" stroke-dasharray="1 1" />
+  <path d="M 64 47 h 6 M 67 44 v 6" />
+  <text x="67" y="62" text-anchor="middle">Y</text><circle cx="96" cy="47" r="5" stroke-dasharray="1 1" />
+  <path d="M 93 47 h 6 M 96 44 v 6" />
+  <text x="96" y="62" text-anchor="middle">BACK</text>
+  <path d="M 15 91 v -4 m 0 2 h 100 m 0 2 v -4" />
+  <text x="65" y="96" text-anchor="middle">100 mm horizontal calibration</text>
+  <path d="M 120 20 h 4 m -2 0 v 100 m -2 0 h 4" />
+  <text x="127" y="74" transform="rotate(-90 127 74)" text-anchor="middle">100 mm vertical calibration</text>
+  <text x="15" y="105">Dashed circles are placeholders for knobs and cap, not hole sizes.</text>
+  <text x="15" y="111">Dashed outline is a trial face, not the PCB or enclosure outline.</text>
+</g>
+</svg>

@@ -1,0 +1,23 @@
+{
+  "status": "Electrical draft; footprints and dimensions pending fit confirmation",
+  "control_panel": {
+    "J1": {"part": "JST B08B-PASK-1", "pins": ["GND", "X_A", "X_B", "X_SW", "BACK", "Y_A", "Y_B", "3V3"]},
+    "J2": {"part": "EmbedFire EBF410448V1R0 / X socket", "pins": ["X_B", null, "X_A", "X_SW", "GND", "3V3"]},
+    "J3": {"part": "EmbedFire EBF410448V1R0 / Y socket", "pins": ["Y_B", null, "Y_A", null, "GND", "3V3"]},
+    "SW1": {"part": "Four-pin normally open tactile switch", "pins": ["BACK", "GND", "BACK", "GND"]}
+  },
+  "pi_adapter": {
+    "J1": {"part": "JST B08B-PASK-1", "pins": ["GND", "X_A", "X_B", "X_SW", "BACK", "Y_A", "Y_B", "3V3"]},
+    "J2": {
+      "part": "Samtec SSW-120-01-T-D",
+      "physical_pin_nets": {"1": "3V3", "9": "GND", "11": "X_A", "13": "X_B", "15": "X_SW", "16": "BACK", "29": "Y_A", "31": "Y_B"}
+    }
+  },
+  "panel_layout_mm": {
+    "outline_trial": [94, 44],
+    "x_center": [19, 22],
+    "y_center": [52, 22],
+    "back_center": [81, 22],
+    "origin": "upper left of trial face, viewed from the knob side"
+  }
+}
