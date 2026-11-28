@@ -7,7 +7,9 @@
 - On the Pi, software decoding restored prompt, correctly directed encoder response in the bench check. The rightmost Home icon on the last page became reachable. The current HDMI output was 1280×720 at 60 Hz using a runtime display override.
 - A right detent at the end of an upper row still moved focus to the first icon on the lower row of the same page. The USB trace confirmed delivery of the right command. An alternate rotary mapping held at that edge, but five repeated left detents produced five complete USB writes and only one visible move.
 - Separate horizontal swipe experiments changed pages in both directions. After a forward swipe removed focus, one Right focused the first icon in the upper row, and Down moved to the first icon in the lower row. After a reverse swipe, the first Left selected the upper-left icon on the destination page. Reaching its right edge required additional moves. The last page showed icons only in its upper row.
-- The standard service was restored with software decoding. One-detent, same-row page navigation remains unimplemented. The next isolated test is to detect the active row and destination occupancy from decoded frames, then verify a page move and focus recovery without selecting an app. USB-triggered startup is deferred.
+- In two isolated tests, one physical right detent from Messages at the upper-right edge of page 3 moved to Calendar at the upper-left of page 4. Decoded frames confirmed focus after 1.35 s and 1.39 s. The first test ended before the operator saw focus because the trial service stopped automatically. In the second test, a capture taken 12.9 s after the detent showed Calendar still highlighted with the trial service running.
+- The Pi returned to the standard service with software decoding and 720p60 output. The candidate covers that single route. A fast turn can reach the edge before recognition and still pass the original cross-row command. The candidate remains isolated.
+- Next, guard horizontal input while the row edge is being confirmed, then extend same-row navigation to the reverse direction and the lower row. On the small HDMI bench, verify focus on the final page, fast turns, both encoders, and app and Dashboard controls before deployment. USB-triggered startup remains deferred.
 
 ### 2026-11-27 · Control-panel PCB draft
 
@@ -52,7 +54,9 @@ The original image passed exact-length readback on the Mac. Earlier first-boot M
 - 小屏台架继续采用软件解码。实测旋钮方向正确、响应迅速，可以移到末页最右图标。HDMI 本轮沿用运行时覆盖，输出为 1280×720 @ 60 Hz。
 - 普通页上排行尾右转仍会跳到本页下排首个图标。USB 日志确认右移命令完整送达。另一组旋钮命令能在该行尾停住，但连续左转五格时，五条 USB 命令完整发出，焦点只移动一次。
 - 单独发出的横向滑动手势已在两个方向上翻页。向右翻页后焦点消失，补一格右键选中新页上排第一个图标，再下移一格可到下排第一个图标。向左翻页后，首个左键选中上一页上排最左的图标，仍需额外移动才能到右缘。末页只有上排有图标。
-- 已恢复使用软件解码的常规服务。一格旋钮触发同行翻页尚未实现。下一步在隔离版本里根据解码画面识别当前行和相邻页是否有同行目标，再验证翻页并恢复焦点，检查是否意外打开应用。USB 插入自启暂缓。
+- 隔离版两次实测均由实体旋钮右转一格，从第 3 页上排最右的 Messages 翻到第 4 页上排最左的 Calendar。解码画面分别在 1.35 秒和 1.39 秒确认焦点。首轮试验服务自动停止，操作者没看到焦点。第二轮保留画面，右转 12.9 秒后的抓帧仍显示 Calendar 高亮，当时试验服务正常运行。
+- Pi 已恢复软件解码的常规服务，输出 720p60。候选目前只覆盖这条路径。快速转到行尾时，识别完成前仍可能放行原有跨行命令。候选暂留隔离入口。
+- 下一步先避免行尾识别期间放行跨行命令，再补齐向左与下排的同行翻页。上正式入口前，在小屏实测末页焦点、连续快转、双轴及应用内与 Dashboard 的操作。USB 插入自启继续暂缓。
 
 ### 2026-11-27 · 控制面板 PCB 草案
 
